@@ -1,30 +1,30 @@
-# TravelGuideSA
-A travel guide website showcasing destinations and attractions in South Africa.
-🇿🇦 Explore South Africa – Travel Guide Website
-Overview
+# 🇿🇦 TravelGuideSA
 
-Explore South Africa is a simple travel guide website designed to showcase popular destinations, provinces, and activities across South Africa. The site helps users discover places to visit, learn about local attractions, and plan trips in an easy and visual way.
+A South Africa Travel Guide Website
 
-This project was created for learning and practice in web development using core front-end technologies.
+# Overview
 
-Features
+TravelGuideSA is a simple travel guide website designed to showcase popular destinations, provinces, and attractions across South Africa. The website helps users explore places to visit, learn about local attractions, and get travel inspiration in a clear and visual way.
 
-Home page introducing South Africa as a travel destination
+This project was created for learning and practice in front-end web development using core web technologies.
 
-Pages highlighting provinces and attractions
+# ✨ Features
 
-Contact page for user enquiries
+🏠 Home page introducing South Africa as a travel destination
 
-Responsive layout for desktop and mobile devices
+🗺️ Pages highlighting provinces and popular attractions
 
-Images and descriptions for a better user experience
+📩 Contact page for user enquiries
 
-Technologies Used
+📱 Responsive design for desktop and mobile devices
 
-HTML5
+🖼️ Images and descriptions for a better user experience
 
-CSS3
+# Technologies Used
 
-JavaScript
+🧱 HTML5
 
-GitHub Pages (for deployment)
+🎨 CSS3
+
+⚙️ JavaScript
+
