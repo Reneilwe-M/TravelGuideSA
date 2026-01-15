@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA3L2pvYjk1NS0yMDkuanBn.jpg">
+
+    <title>Western Cape - Explore South Africa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Additional styles for province page */
+        .province-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1580060839134-75a5edca2e99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .province-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .province-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .province-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .province-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .province-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .province-info h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .province-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+        .stat-item h3 {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .highlight-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .highlight-img {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .highlight-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover .highlight-img img {
+            transform: scale(1.1);
+        }
+
+        .highlight-content {
+            padding: 1.5rem;
+        }
+
+        .highlight-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .map-container {
+            margin: 3rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .weather-widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .weather-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .weather-header i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-right: 1rem;
+        }
+
+        .weather-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .weather-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .travel-tips {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .tip-item i {
+            background: var(--secondary);
+            color: var(--dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .province-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .province-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .province-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>Explore South Africa</span>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Provinces</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Province Hero Section -->
+    <section class="province-hero">
+        <div class="province-hero-content">
+            <span class="province-badge">Western Cape</span>
+            <h1>Western Cape Province</h1>
+            <p>Discover the breathtaking beauty of South Africa's most visited province, from iconic Table Mountain to world-class winelands.</p>
+        </div>
+    </section>
+
+    <!-- Province Details -->
+    <section class="container">
+        <div class="province-details">
+            <div class="province-info">
+                <h2>About Western Cape</h2>
+                <p>The Western Cape is a province of South Africa, situated on the southwestern coast of the country. It is the fourth-largest of the nine provinces with an area of 129,449 square kilometres, and the third-most populous, with an estimated 7 million inhabitants in 2020.</p>
+                
+                <p>About two-thirds of these inhabitants live in the metropolitan area of Cape Town, which is also the provincial capital. The Western Cape was created in 1994 from part of the former Cape Province. It is a popular international tourist destination, known for its beaches, vineyards, mountains, and diverse wildlife.</p>
+                
+                <div class="province-stats">
+                    <div class="stat-item">
+                        <h3>7M+</h3>
+                        <p>Population</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>129,449</h3>
+                        <p>Area (km²)</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3</h3>
+                        <p>Official Languages</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>18°C</h3>
+                        <p>Average Temperature</p>
+                    </div>
+                </div>
+
+                <h2>Top Attractions</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-img">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Table Mountain">
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Table Mountain</h3>
+                            <p>Iconic flat-topped mountain forming a dramatic backdrop to Cape Town. Take the cable car for breathtaking views.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-img">
+                            <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Cape Winelands">
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Cape Winelands</h3>
+                            <p>World-renowned wine regions including Stellenbosch, Franschhoek, and Paarl with historic estates and tastings.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-img">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cape Point">
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Cape Point</h3>
+                            <p>Dramatic headland at the meeting point of the Atlantic and Indian Oceans in Table Mountain National Park.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-img">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Robben Island">
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Robben Island</h3>
+                            <p>UNESCO World Heritage Site where Nelson Mandela was imprisoned for 18 years during apartheid.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Travel Tips</h2>
+                <div class="travel-tips">
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <i class="fas fa-sun"></i>
+                            <div>
+                                <h4>Best Time to Visit</h4>
+                                <p>September to November for spring flowers, or March to May for pleasant weather.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-utensils"></i>
+                            <div>
+                                <h4>Local Cuisine</h4>
+                                <p>Try bobotie, braai (barbecue), and fresh seafood. Don't miss the world-class wines.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-car"></i>
+                            <div>
+                                <h4>Getting Around</h4>
+                                <p>Rent a car for flexibility. Uber is widely available in urban areas.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>
+                                <h4>Currency</h4>
+                                <p>South African Rand (ZAR). Credit cards widely accepted.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="province-sidebar">
+                <div class="weather-widget">
+                    <div class="weather-header">
+                        <i class="fas fa-cloud-sun"></i>
+                        <div>
+                            <h3>Cape Town Weather</h3>
+                            <p>Mostly Sunny, 24°C</p>
+                        </div>
+                    </div>
+                    <div class="weather-info">
+                        <div class="weather-item">
+                            <span>Humidity</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="weather-item">
+                            <span>Wind</span>
+                            <span>15 km/h</span>
+                        </div>
+                        <div class="weather-item">
+                            <span>Sunrise</span>
+                            <span>6:45 AM</span>
+                        </div>
+                        <div class="weather-item">
+                            <span>Sunset</span>
+                            <span>7:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-facts">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li><strong>Capital:</strong> Cape Town</li>
+                        <li><strong>Major Cities:</strong> Cape Town, Stellenbosch, George</li>
+                        <li><strong>Languages:</strong> Afrikaans, English, Xhosa</li>
+                        <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                        <li><strong>International Airport:</strong> Cape Town International (CPT)</li>
+                    </ul>
+                </div>
+
+                <div class="emergency-contacts">
+                    <h3>Emergency Contacts</h3>
+                    <ul>
+                        <li><strong>Police:</strong> 10111</li>
+                        <li><strong>Ambulance:</strong> 10177</li>
+                        <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13519426.899246978!2d15.068878125000002!3d-33.91335739999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5002d0e71f2f%3A0x7df56cf0c96b8e0c!2sWestern%20Cape!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Explore SA</h3>
+                    <p>Your comprehensive guide to discovering South Africa's incredible diversity, from vibrant cities to breathtaking natural wonders.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Provinces</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Tourism Street, Gauteng</p>
+                        <p><i class="fas fa-phone"></i> +27 (0)21 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@exploresa.co.za</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Explore South Africa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

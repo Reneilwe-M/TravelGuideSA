@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" href="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA3L2pvYjk1NS0yMDkuanBn.jpg">
+
+    <title>South African Provinces - Explore South Africa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Province Hero Section */
+        .province-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1698594576842-2c52cad09e0e?q=80&w=1275&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .province-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .province-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .province-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Province Cards Styling */
+        .province-section {
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .province-header {
+            background: linear-gradient(to right, var(--dark), var(--primary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .province-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .province-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .province-content {
+            padding: 2rem;
+        }
+
+        .province-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .province-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .province-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+        .stat-item h4 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .highlight-img {
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .highlight-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover .highlight-img img {
+            transform: scale(1.1);
+        }
+
+        .highlight-content {
+            padding: 1.2rem;
+        }
+
+        .highlight-content h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .province-sidebar {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .quick-facts, .emergency-contacts {
+            margin-bottom: 1.5rem;
+        }
+
+        .quick-facts h4, .emergency-contacts h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .quick-facts ul, .emergency-contacts ul {
+            list-style: none;
+        }
+
+        .quick-facts li, .emergency-contacts li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .quick-facts li:before, .emergency-contacts li:before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+
+        .travel-tips {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .travel-tips h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .tip-item i {
+            background: var(--secondary);
+            color: var(--dark);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .province-map {
+            margin-top: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .province-map iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        /* Navigation between provinces */
+        .province-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        @media (max-width: 768px) {
+            .province-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .province-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .province-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>Explore South Africa</span>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html" class="active">Provinces</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="province-hero">
+        <div class="province-hero-content">
+            <h1>South African Provinces</h1>
+            <p>Discover the unique beauty, culture, and attractions of all nine provinces that make up the Rainbow Nation.</p>
+        </div>
+    </section>
+
+    <!-- All Provinces -->
+    <section class="container">
+        <!-- Western Cape -->
+        <div class="province-section" id="westerncape">
+            <div class="province-header">
+                <h2>Western Cape Province</h2>
+                <p>Home to iconic Table Mountain, world-class winelands, and breathtaking coastal scenery</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About Western Cape</h3>
+                        <p>The Western Cape is a province of South Africa, situated on the southwestern coast of the country. It is the fourth-largest of the nine provinces with an area of 129,449 square kilometres, and the third-most populous, with an estimated 7 million inhabitants in 2020.</p>
+                        
+                        <p>About two-thirds of these inhabitants live in the metropolitan area of Cape Town, which is also the provincial capital. The Western Cape was created in 1994 from part of the former Cape Province. It is a popular international tourist destination, known for its beaches, vineyards, mountains, and diverse wildlife.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>7M+</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>129,449</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>3</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>18°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://images.unsplash.com/photo-1651349957998-8ae820a88556?q=80&w=2087&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Table Mountain">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Table Mountain</h4>
+                                    <p>Iconic flat-topped mountain forming a dramatic backdrop to Cape Town</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://images.unsplash.com/photo-1647359287844-e3f49721617a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cape Winelands">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Cape Winelands</h4>
+                                    <p>World-renowned wine regions including Stellenbosch and Franschhoek</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://www.bautrip.com/images/what-to-visit/cape-point-lighthouse-south-africa.jpg" alt="Cape Point">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Cape Point</h4>
+                                    <p>Dramatic headland at the meeting point of two oceans</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>September to November for spring flowers</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try bobotie, braai, and fresh seafood</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>Rent a car for flexibility</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Cape Town</li>
+                                <li><strong>Major Cities:</strong> Cape Town, Stellenbosch, George</li>
+                                <li><strong>Languages:</strong> Afrikaans, English, Xhosa</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> Cape Town International (CPT)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13519426.899246978!2d15.068878125000002!3d-33.91335739999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5002d0e71f2f%3A0x7df56cf0c96b8e0c!2sWestern%20Cape!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#northerncape" class="nav-btn"><i class="fas fa-arrow-left"></i> Northern Cape</a>
+                    <a href="#gauteng" class="nav-btn">Gauteng <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gauteng -->
+        <div class="province-section" id="gauteng">
+            <div class="province-header">
+                <h2>Gauteng Province</h2>
+                <p>The economic hub of South Africa, featuring vibrant cities and historical significance</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About Gauteng</h3>
+                        <p>Gauteng, which means "place of gold", is the smallest province in South Africa but the most populous and economically significant. It is the wealthiest province in South Africa and is considered the financial hub of not only South Africa but the entire African continent.</p>
+                        
+                        <p>Home to the cities of Johannesburg and Pretoria, Gauteng is a province of contrasts - from the bustling metropolis of Johannesburg to the more administrative capital city of Pretoria. Despite its small size, it contributes over 33% to South Africa's GDP.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>15.5M</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>18,178</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>5</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>22°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://images.unsplash.com/photo-1636706519609-988babca3dd5?q=80&w=1258&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Johannesburg Skyline">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Johannesburg</h4>
+                                    <p>Vibrant economic hub with rich history and culture</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://as1.ftcdn.net/v2/jpg/02/26/19/60/1000_F_226196073_xM5XGA2lW8srSxbumP5D1I3uOa6r6niu.jpg" alt="Pretoria Union Buildings">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Union Buildings</h4>
+                                    <p>Official seat of the South African government</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://images.unsplash.com/photo-1604614765191-02ea6bdb941b?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Soweto">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Soweto</h4>
+                                    <p>Historic township with vibrant culture</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>March to May for pleasant weather</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try bunny chow and traditional braai</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>Use ride-sharing services in urban areas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Johannesburg</li>
+                                <li><strong>Major Cities:</strong> Johannesburg, Pretoria, Soweto</li>
+                                <li><strong>Languages:</strong> Zulu, English, Afrikaans</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> OR Tambo (JNB)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229169.6045626456!2d27.89917169635829!3d-26.171449600000013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c1a1e05ad27%3A0x2b7dc71d26c4d1a4!2sGauteng!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#westerncape" class="nav-btn"><i class="fas fa-arrow-left"></i> Western Cape</a>
+                    <a href="#kwazulunatal" class="nav-btn">KwaZulu-Natal <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- KwaZulu-Natal -->
+        <div class="province-section" id="kwazulunatal">
+            <div class="province-header">
+                <h2>KwaZulu-Natal Province</h2>
+                <p>Where majestic mountains meet golden beaches, rich Zulu culture, and wildlife wonders</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About KwaZulu-Natal</h3>
+                        <p>KwaZulu-Natal is a province of South Africa that was created in 1994 when the Zulu bantustan of KwaZulu and Natal Province were merged. It is located in the southeast of the country, enjoying a long shoreline beside the Indian Ocean and sharing borders with three other provinces and the countries of Mozambique, Eswatini and Lesotho.</p>
+                        
+                        <p>Its capital is Pietermaritzburg, and its largest city is Durban. It is the second-most populous province in South Africa, with slightly fewer residents than Gauteng. The province is known for its beautiful beaches, the Drakensberg mountains, and its rich Zulu heritage.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>11.5M</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>94,361</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>4</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>21°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://i.pinimg.com/originals/6f/03/4f/6f034f086871c5fe5fa87ac644f62da4.jpg" alt="Drakensberg Mountains">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Drakensberg Mountains</h4>
+                                    <p>Majestic mountain range with stunning vistas and hiking trails</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://images.unsplash.com/photo-1567625911730-f47b863fd10b?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Durban Beachfront">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Durban Beachfront</h4>
+                                    <p>Golden beaches and warm Indian Ocean waters</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://stluciasouthafrica.com/wp-content/uploads/2014/08/isimangaliso-wetland-park-activities-scaled.jpg" alt="iSimangaliso Wetland Park">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>iSimangaliso Wetland Park</h4>
+                                    <p>UNESCO World Heritage Site with diverse ecosystems</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>April to September for dry weather</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try bunny chow and traditional Zulu dishes</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>Rent a car to explore the diverse landscapes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Pietermaritzburg</li>
+                                <li><strong>Major Cities:</strong> Durban, Pietermaritzburg, Richards Bay</li>
+                                <li><strong>Languages:</strong> Zulu, English, Xhosa, Afrikaans</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> King Shaka (DUR)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229169.6045626456!2d30.89917169635829!3d-29.171449600000013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7aa7ffcd3d85b%3A0x2b7dc71d26c4d1a4!2sKwaZulu-Natal!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#gauteng" class="nav-btn"><i class="fas fa-arrow-left"></i> Gauteng</a>
+                    <a href="#easterncape" class="nav-btn">Eastern Cape <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eastern Cape -->
+        <div class="province-section" id="easterncape">
+            <div class="province-header">
+                <h2>Eastern Cape Province</h2>
+                <p>Home to pristine Nature's Valley, the Wild Coast, and Nelson Mandela's birthplace</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About Eastern Cape</h3>
+                        <p>The Eastern Cape is a province of South Africa. Its capital is Bhisho, but its two largest cities are East London and Gqeberha. The Eastern Cape is the second largest of the nine provinces and was formed in 1994 out of the Xhosa homelands of Transkei and Ciskei, together with the eastern portion of the Cape Province.</p>
+                        
+                        <p>The province is known for its natural beauty, including the rugged and unspoiled Wild Coast, the mountainous southern Drakensberg region, and the beaches of Nature's Valley. It is also the birthplace of many prominent South Africans, including Nelson Mandela, Thabo Mbeki, and Steve Biko.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>6.7M</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>168,966</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>3</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>19°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://newplacestogo.com/wp-content/uploads/2023/04/20230325_134842-scaled.jpg" alt="Nature's Valley">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Nature's Valley</h4>
+                                    <p>Pristine beach and forest in the Garden Route</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://th.bing.com/th/id/OIP.DzfvURhrmiKgX3Mgz6-VYwHaEx?w=260&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.1&pid=1.7&rm=3&ucfimg=1" alt="Addo Elephant Park">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Addo Elephant Park</h4>
+                                    <p>Home to hundreds of African elephants</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://www.sa-venues.com/attractionsec/gallery/wildcoast/7.jpg" alt="Wild Coast">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Wild Coast</h4>
+                                    <p>Rugged coastline with traditional Xhosa villages</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>September to April for beach weather</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try umngqusho and fresh seafood</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>4x4 recommended for Wild Coast areas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Bhisho</li>
+                                <li><strong>Major Cities:</strong> Gqeberha, East London, Mthatha</li>
+                                <li><strong>Languages:</strong> Xhosa, Afrikaans, English</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> Chief Dawid Stuurman (PLZ)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229169.6045626456!2d27.89917169635829!3d-32.171449600000013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8c4bde8b6b6b6b%3A0x2b7dc71d26c4d1a4!2sEastern%20Cape!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#kwazulunatal" class="nav-btn"><i class="fas fa-arrow-left"></i> KwaZulu-Natal</a>
+                    <a href="#freestate" class="nav-btn">Free State <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Free State -->
+        <div class="province-section" id="freestate">
+            <div class="province-header">
+                <h2>Free State Province</h2>
+                <p>Wide open spaces, stunning sandstone formations, and the judicial capital</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About Free State</h3>
+                        <p>The Free State is a province of South Africa. Its capital is Bloemfontein, which is also South Africa's judicial capital. The Free State is situated on flat boundless plains in the heart of South Africa. The province is the agricultural hub of South Africa, with its fertile soil and well-developed infrastructure.</p>
+                        
+                        <p>The Free State is particularly known for its contribution to South Africa's grain production and for the Golden Gate Highlands National Park with its stunning sandstone formations. The province also hosts the Vredefort Dome, the world's oldest and largest meteorite impact site.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>2.9M</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>129,825</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>3</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>16°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://th.bing.com/th/id/R.98f6043e362aed990599f81b870d44cf?rik=zp%2fYh7cHMOmzUg&riu=http%3a%2f%2fwww.roxannereid.co.za%2fuploads%2f3%2f7%2f7%2f8%2f3778676%2froxannereid-1l3a6162-edit-20181118_orig.jpg&ehk=gYlILL1RDUiltzXh3UntuknoZeLSfOvt1odIRyTxaqw%3d&risl=&pid=ImgRaw&r=0" alt="Golden Gate Highlands">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Golden Gate Highlands</h4>
+                                    <p>Stunning sandstone formations and hiking trails, With a flowing river of Drakernsburg</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://as2.ftcdn.net/v2/jpg/02/48/30/87/1000_F_248308709_Yf29ciJxFbbyxfUezXzlYmDtUeIYlrhA.jpg" alt="Bloemfontein">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Basotho Cultural Village</h4>
+                                    <p>A deep history of the Basotho Culture in the mountains of Maluti</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://media.istockphoto.com/id/1444807741/photo/vredefort-dome-landscape-vista-01.jpg?s=170667a&w=0&k=20&c=xiKFjn3EsBQSTKHG30tf9YmAgZFrjvIWMiRHcaARV-E=" alt="Vredefort Dome">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Vredefort Dome</h4>
+                                    <p>World's oldest meteorite impact site</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>March to May for pleasant weather</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try traditional Afrikaans dishes</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>Car essential for exploring rural areas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Bloemfontein</li>
+                                <li><strong>Major Cities:</strong> Bloemfontein, Welkom, Bethlehem</li>
+                                <li><strong>Languages:</strong> Sesotho, Afrikaans, Xhosa</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> Bram Fischer (BFN)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229169.6045626456!2d26.89917169635829!3d-28.171449600000013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8c4bde8b6b6b6b%3A0x2b7dc71d26c4d1a4!2sFree%20State!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#easterncape" class="nav-btn"><i class="fas fa-arrow-left"></i> Eastern Cape</a>
+                    <a href="#limpopo" class="nav-btn">Limpopo <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Limpopo -->
+        <div class="province-section" id="limpopo">
+            <div class="province-header">
+                <h2>Limpopo Province</h2>
+                <p>The Great North with exceptional wildlife viewing and ancient cultural sites</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About Limpopo</h3>
+                        <p>Limpopo is the northernmost province of South Africa. It is named after the Limpopo River, which forms the province's western and northern borders. The capital and largest city in the province is Polokwane. Limpopo was formed from the northern region of Transvaal Province in 1994.</p>
+                        
+                        <p>The province is famous for its wildlife and nature reserves, including the northern part of Kruger National Park, Mapungubwe National Park (a UNESCO World Heritage Site), and numerous private game reserves. Limpopo is also known for its baobab trees, ancient ruins, and rich cultural heritage.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>5.9M</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>125,754</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>5</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>22°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://images.unsplash.com/photo-1730234341808-0a4956acc6c9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dauto=format&fit=crop&w=1470&q=80" alt="Kruger National Park">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Kruger National Park</h4>
+                                    <p>World-famous safari destination in northern SA</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://cdn.britannica.com/77/179877-138-4C9381FC.jpg" alt="Mapungubwe Heritage Site">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4> Mapungubwe National Park</h4>
+                                    <p>Ancient kingdom and UNESCO World Heritage Site.The park features stunning landscapes, rich biodiversity, and significant archaeological sites</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://s3-cdn.designerjourneys.com/blog/wp-content/uploads/2018/04/04131310/Blyde-River-Canyon.jpg" alt="Baobab Trees">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Blyde River Canyon</h4>
+                                    <p>Blyde River Canyon is one of the largest canyons in the world, offering breathtaking views and numerous hiking trails</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>May to September for wildlife viewing</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try traditional Venda dishes</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>4x4 recommended for rural areas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Polokwane</li>
+                                <li><strong>Major Cities:</strong> Polokwane, Tzaneen, Thohoyandou</li>
+                                <li><strong>Languages:</strong> Sepedi, Xitsonga, Tshivenda</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> Polokwane (PTG)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229169.6045626456!2d29.89917169635829!3d-24.171449600000013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8c4bde8b6b6b6b%3A0x2b7dc71d26c4d1a4!2sLimpopo!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#freestate" class="nav-btn"><i class="fas fa-arrow-left"></i> Free State</a>
+                    <a href="#mpumalanga" class="nav-btn">Mpumalanga <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mpumalanga -->
+        <div class="province-section" id="mpumalanga">
+            <div class="province-header">
+                <h2>Mpumalanga Province</h2>
+                <p>Where spectacular landscapes meet incredible wildlife experiences</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About Mpumalanga</h3>
+                        <p>Mpumalanga is a province in eastern South Africa, bordering the nations of Swaziland and Mozambique. It was formed in 1994, when the Eastern Transvaal was merged with the former bantustans KaNgwane, KwaNdebele and parts of Lebowa and Gazankulu. The capital is Mbombela.</p>
+                        
+                        <p>Mpumalanga means "the place where the sun rises" and is known for its spectacular landscapes and game reserves. It is home to the southern part of Kruger National Park, the stunning Blyde River Canyon, and the famous Panorama Route. The province is a major tourist destination for both local and international visitors.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>4.6M</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>76,495</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>3</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>19°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/02/49/05/f5/sudwala-caves.jpg" alt="Sudwala Caves">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4> Sudwala Caves</h4>
+                                    <p>The Sudwala Caves are the oldest known caves in the world, offering guided tours that take visitors deep into the underground formations. The caves are a fascinating exploration of geology and history.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://i.pinimg.com/originals/80/fa/b2/80fab28babe36dde4bbd686dda355730.jpg" alt="God's Window">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>God's Window</h4>
+                                    <p>God’s Window is a panoramic viewpoint atop the Drakensberg escarpment in Mpumalanga, offering expansive views over the Lowveld</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://images.unsplash.com/photo-1681829496174-e9b03398a0a9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kruger National Park">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Kruger National Park</h4>
+                                    <p>World-famous Big Five game reserve</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>May to September for dry weather</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try traditional Swazi dishes</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>Car essential for exploring the Panorama Route</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Mbombela</li>
+                                <li><strong>Major Cities:</strong> Mbombela, Emalahleni, Secunda</li>
+                                <li><strong>Languages:</strong> Swati, Zulu, Tsonga</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> Kruger Mpumalanga (MQP)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229169.6045626456!2d30.89917169635829!3d-25.171449600000013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8c4bde8b6b6b6b%3A0x2b7dc71d26c4d1a4!2sMpumalanga!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#limpopo" class="nav-btn"><i class="fas fa-arrow-left"></i> Limpopo</a>
+                    <a href="#northwest" class="nav-btn">North West <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- North West -->
+        <div class="province-section" id="northwest">
+            <div class="province-header">
+                <h2>North West Province</h2>
+                <p>Entertainment and wildlife combine in this popular tourist destination</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About North West</h3>
+                        <p>The North West is a province of South Africa. Its capital is Mahikeng. The province is located to the west of the major population centre of Gauteng and south of Botswana. It was formed after the end of Apartheid in 1994, and includes parts of the former Transvaal Province and Cape Province.</p>
+                        
+                        <p>The North West is known for Sun City and the Pilanesberg National Park, which are major tourist attractions. The province also features the Hartbeespoort Dam, a popular weekend destination for residents of Gauteng. The economy is dominated by mining, particularly platinum and gold.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>4.1M</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>104,882</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>4</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>20°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://www.airlinestaffrates.com/wp-content/uploads/2021/05/suncity.jpg" alt="Sun City Resort">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Sun City Resort</h4>
+                                    <p>Luxury entertainment complex and casino</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://www.my-wildlife.com/wp-content/uploads/2019/05/Pilanesberg-gregoryrohart_8_sur_8-1550x1033.jpg" alt="Pilanesberg National Park">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Pilanesberg National Park</h4>
+                                    <p>Big Five game reserve in an ancient volcano crater</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://i.ytimg.com/vi/ti-Tv69F3oE/maxresdefault.jpg" alt="Hartbeespoort Dam">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Hartbeespoort Dam</h4>
+                                    <p>Hartbeespoort Dam is an iconic arch-type dam in the North West Province of South Africa, combining historical significance, scenic beauty, and a wide range of recreational activities for visitors.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>April to October for mild weather</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try traditional Tswana dishes</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>Easy access from Gauteng by car</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Mahikeng</li>
+                                <li><strong>Major Cities:</strong> Mahikeng, Klerksdorp, Potchefstroom</li>
+                                <li><strong>Languages:</strong> Setswana, Afrikaans, Xhosa</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> Pilanesberg (NTY)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229169.6045626456!2d26.89917169635829!3d-26.171449600000013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8c4bde8b6b6b6b%3A0x2b7dc71d26c4d1a4!2sNorth%20West!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#mpumalanga" class="nav-btn"><i class="fas fa-arrow-left"></i> Mpumalanga</a>
+                    <a href="#northerncape" class="nav-btn">Northern Cape <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Northern Cape -->
+        <div class="province-section" id="northerncape">
+            <div class="province-header">
+                <h2>Northern Cape Province</h2>
+                <p>Vast semi-desert landscapes, spectacular star-gazing, and unique wildlife</p>
+            </div>
+            <div class="province-content">
+                <div class="province-details">
+                    <div class="province-info">
+                        <h3>About Northern Cape</h3>
+                        <p>The Northern Cape is the largest and most sparsely populated province of South Africa. It was created in 1994 when the Cape Province was split up. Its capital is Kimberley. The Northern Cape includes the Kalahari Gemsbok National Park, part of the Kgalagadi Transfrontier Park, and the Augrabies Falls.</p>
+                        
+                        <p>The province is famous for its diamond mines, particularly the Big Hole in Kimberley. It is also known for its spectacular spring flowers in Namaqualand, the Kalahari desert, and excellent stargazing opportunities due to its clear skies and low light pollution. The Orange River flows through the province, providing irrigation for agriculture.</p>
+                        
+                        <div class="province-stats">
+                            <div class="stat-item">
+                                <h4>1.3M</h4>
+                                <p>Population</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>372,889</h4>
+                                <p>Area (km²)</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>3</h4>
+                                <p>Official Languages</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>18°C</h4>
+                                <p>Average Temperature</p>
+                            </div>
+                        </div>
+
+                        <h3>Top Attractions</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://www.journeysinternational.com/wp-content/uploads/2019/04/namibia-desert.jpg" alt="Kalahari Desert">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Kalahari Desert</h4>
+                                    <p>Vast semi-desert with red sand dunes</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://th.bing.com/th/id/R.00157d03d74a68db30bce3f6799917f0?rik=ppDp%2fxbx896gqA&riu=http%3a%2f%2fwww.tailormadesafaris.co.za%2fuploads%2f2%2f0%2f8%2f1%2f20817686%2f1000pix-tailor-made-safaris-augrabies-falls-1_1_orig.jpg&ehk=vN0aGRtyb2d4bgERkp8ZMII0e%2f5Bk9HwafXc1dDtBj4%3d&risl=&pid=ImgRaw&r=0" alt="Augrabies Falls">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>Augrabies Falls</h4>
+                                    <p>Augrabies Falls, located on the Orange River in South Africa's Northern Cape, is a dramatic 56-metre waterfall plunging into a deep granite gorge, surrounded by a rugged semi-arid landscape rich in unique flora and wildlife.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-card">
+                                <div class="highlight-img">
+                                    <img src="https://th.bing.com/th/id/R.82afb08f4a6cccb57ffe5200077cd408?rik=xuIyIgDckyhyWg&pid=ImgRaw&r=0" alt="The Big hole">
+                                </div>
+                                <div class="highlight-content">
+                                    <h4>The Big hole</h4>
+                                    <p>The Big Hole in Kimberley is the largest hand-dug excavation in the world, a historic diamond mine that shaped South Africa’s diamond industry and now serves as a major tourist attraction.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="travel-tips">
+                            <h4>Travel Tips</h4>
+                            <div class="tips-grid">
+                                <div class="tip-item">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <h5>Best Time to Visit</h5>
+                                        <p>August to September for spring flowers</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-utensils"></i>
+                                    <div>
+                                        <h5>Local Cuisine</h5>
+                                        <p>Try traditional Karoo dishes</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <i class="fas fa-car"></i>
+                                    <div>
+                                        <h5>Getting Around</h5>
+                                        <p>4x4 recommended for desert areas, move in the mines of Kimbeley big hole</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="province-sidebar">
+                        <div class="quick-facts">
+                            <h4>Quick Facts</h4>
+                            <ul>
+                                <li><strong>Capital:</strong> Kimberley</li>
+                                <li><strong>Major Cities:</strong> Kimberley, Upington, Springbok</li>
+                                <li><strong>Languages:</strong> Afrikaans, Setswana, Xhosa</li>
+                                <li><strong>Time Zone:</strong> SAST (UTC+2)</li>
+                                <li><strong>International Airport:</strong> Kimberley (KIM)</li>
+                            </ul>
+                        </div>
+
+                        <div class="emergency-contacts">
+                            <h4>Emergency Contacts</h4>
+                            <ul>
+                                <li><strong>Police:</strong> 10111</li>
+                                <li><strong>Ambulance:</strong> 10177</li>
+                                <li><strong>Tourist Helpline:</strong> 083 123 4567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="province-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229169.6045626456!2d22.89917169635829!3d-29.171449600000013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8c4bde8b6b6b6b%3A0x2b7dc71d26c4d1a4!2sNorthern%20Cape!5e0!3m2!1sen!2sza!4v1690900000000!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="province-nav">
+                    <a href="#northwest" class="nav-btn"><i class="fas fa-arrow-left"></i> North West</a>
+                    <a href="#westerncape" class="nav-btn">Western Cape <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Explore SA</h3>
+                    <p>Your comprehensive guide to discovering South Africa's incredible diversity, from vibrant cities to breathtaking natural wonders.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Provinces</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i>123 Tourism Street, Gauteng</p>
+                        <p><i class="fas fa-phone"></i> +27 (0)21 123 4567</p>
+                        <p><i class="fas fa-envelope"></i> info@exploresa.co.za</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Explore South Africa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
